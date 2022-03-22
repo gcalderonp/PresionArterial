@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PresionArterial.MainPage" BackgroundColor="#ffff">
+
+    <StackLayout Margin="1, 15, 1, 0" >
+
+
+        <Label 
+            Margin="0,5,0,5"
+            HorizontalTextAlignment="Center"
+            Opacity="0.5"
+            Text="Desarrollo de Aplicaiones moviles XAMARIN"/>
+
+        <Entry IsVisible="false" x:Name="txtId" />
+        <Entry x:Name="txtName" Placeholder="Nombre y Apellido" Keyboard="Text" />
+        <Label Margin="0,15,0,0" FontSize="Subtitle" Text="Fecha de Nacimiento"/>
+        <DatePicker x:Name="txtDate"  MinimumDate="1/01/1926" />
+
+        <Button BackgroundColor="Transparent" BorderWidth="1" BorderColor="#68B0AB" x:Name="btnGuardar" Text="Guardar" Clicked="btnGuardar_Clicked" CornerRadius="15"  />
+
+        <Grid IsVisible="false" x:Name="btnUDC">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Button BackgroundColor="Transparent" BorderWidth="1" BorderColor="Red" Grid.Row="0" Grid.Column="0" x:Name="btnEliminar" Text="Eliminar" Clicked="btnEliminar_Clicked" CornerRadius="15" />
+            <Button BackgroundColor="Transparent" BorderWidth="1" BorderColor="#83C28E" Grid.Row="0" Grid.Column="1" x:Name="btnActualizar" Text="Actualizar" Clicked="btnActualizar_Clicked" CornerRadius="15"  />
+            <Button BackgroundColor="Transparent" BorderWidth="1" BorderColor="#8F98C7" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" CornerRadius="15" />
+        </Grid>
+
+        <ListView x:Name="listNewUsers" ItemSelected="listNewUsers_ItemSelected" ItemTapped="listNewUsers_ItemTapped">
+
+            <ListView.Header>
+                <StackLayout>
+                    <Grid>
+                        <Label HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" Text="Nombre" Grid.Row="0" Grid.Column="0" />
+                        <Label HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" Text="Nacimiento" Grid.Row="0" Grid.Column="1" />
+                        <Label HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" Text="Control" Grid.Row="0" Grid.Column="2" />
+                    </Grid>
+                </StackLayout>
+            </ListView.Header>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+
+                            <Label HorizontalTextAlignment="Center" Text="{Binding Name}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+                            <Label HorizontalTextAlignment="Center" Text="{Binding Date_of_birth, StringFormat= '{0:MM/dd/yyyy}' }" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" />
+                            <Button x:Name="btnGoControl" Clicked="btnGoControl_Clicked" Text="Control" Grid.Row="0" FontSize="11" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"  />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </StackLayout>
+
+</ContentPage>
